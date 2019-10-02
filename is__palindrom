@@ -1,0 +1,17 @@
+/**
+ * Является ли строка палиндромом
+ * @param  {string}  value
+ * @return {boolean}
+ */
+function isPalindrome(value) {
+    
+    const restructureString = value.toLowerCase().split(' ').join('')
+    
+    const palString = restructureString.split('').reverse().join('')
+    
+    return palString === restructureString
+    
+}
+
+console.log(isPalindrome('abcd')); // false
+console.log(isPalindrome('A man a plan a canal Panama'));// true
