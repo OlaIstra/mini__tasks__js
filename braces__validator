@@ -1,0 +1,27 @@
+/**
+ * Проверка на сбалансированность фигурных скобкок
+ * @param  {string}  input
+ * @return {boolean}
+ */
+function isBalanced(input) {
+      let countOpen = 0
+      let countClose = 0
+      
+      input.split().map(elem => {
+          switch (elem) {
+                case "{" :
+                    countOpen++
+                    break;
+                case "}" :
+                    countClose++
+                    break;
+                default :
+                    return false
+          }
+      })
+      
+      return countOpen === countClose
+}
+
+console.log('balanced:', isBalanced('{{}{}}{}')); // true
+console.log('not balanced:', isBalanced('{}{{}')); // false
