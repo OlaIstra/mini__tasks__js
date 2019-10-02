@@ -1,0 +1,22 @@
+function isIsomorphic(left, right) {
+    
+      if (left.length !== right.length) return false
+
+      const letters = {};
+
+      left.split().map((letter, idx) => {
+        
+        if (letters[left[idx]] === undefined) {
+            letters[left[idx]] = right[idx]
+        } else if (letters[left[idx]] !== right[idx]) {
+            return false
+        }
+        
+      })
+      
+      return true;
+    
+}
+
+console.log('egg -> add:', isIsomorphic('egg', 'add')); // true
+console.log('paper -> title:', isIsomorphic('paper', 'title')); // true
