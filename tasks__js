@@ -1,0 +1,45 @@
+/**
+ * Получения двумерный массив анаграмм из произвольного массива слов
+ * @param   {string[]} list
+ * @returns {Array<[string, string]>}
+ */
+function getAnagrams(list) {
+    
+    const sortArray = []
+    
+    list.map(str => {
+        sortArray.push(str.toLowerCase().split('').sort().join(''))
+    })
+    
+    const indexArray =[]
+    
+    sortArray.map((elem,idx) => {
+        indexArray.push(sortArray.indexOf(elem, idx+1))
+    })
+    
+    const resultList = []
+   
+    indexArray.map((elem,idx) => {
+        if (elem !== -1) {
+            resultList.push([list[idx], list[indexArray[idx]]])
+        }
+    })
+    
+    return resultList
+    
+}
+
+const inputList = [
+	'кот', 'пила', 'барокко',
+	'стоп', 'ток', 'кошка',
+	'липа', 'коробка', 'пост',
+];
+
+// Проверка (лучше смотреть в консоль)
+console.log(getAnagrams(inputList));
+// [
+//   ['кот', 'ток'],
+//   ['пила', 'липа'],
+//   ['барокко', 'коробка'],
+//   ['стоп', 'пост'],
+// ]
