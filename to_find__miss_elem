@@ -1,0 +1,31 @@
+/**
+ * Найти пропущеное значение в неотсортированном массиве.
+ * @param  {number[]} values
+ * @return {boolean}
+ */
+function missing(values) {
+    
+    if (values.length === 0) {
+        return 
+    }
+    
+    const sortArr = values.sort()
+    
+    let count = sortArr[0] + 1
+    
+    sortArr.map(elem => {
+        if (sortArr.indexOf(count) === -1) {
+            return count
+        }
+        count ++
+    })
+   
+    return (count > sortArr[sortArr.length-1]) 
+            ? undefined
+            : count
+    
+}
+
+console.log(missing([1, 4, 3])); // 2
+console.log(missing([5, 1, 4, 2])); // 3
+console.log(missing([1, 2, 3, 4])); // undefined
