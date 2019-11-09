@@ -1,0 +1,28 @@
+/**
+ * Получение свойства объекта
+ * @param {object} src
+ * @param {string} path
+ */
+function get(src, path) {
+    const pathArr = path.split('.')
+    
+    let result = src
+    
+    for (i = 0; i < pathArr.length; i ++) {
+        if (result[pathArr[i]]) {
+            result = result[pathArr[i]]
+        }
+    }
+    return result
+}
+
+var fixture = {
+	foo: {
+		bar: [
+			{qux: 'bingo'},
+		],
+	},
+};
+
+// Проверка
+console.log(get(fixture, 'foo.bar.0.qux') === 'bingo');
