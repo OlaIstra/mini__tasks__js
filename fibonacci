@@ -1,0 +1,27 @@
+/**
+ * Fibonacci
+ */
+
+
+// first
+ const fibonacci = num => {
+    const result = [0, 1]
+    
+    for(let i = 2; i <= num; i++) {
+        const prevNum = result[i-1]
+        const prevPrevNum = result[i-2]
+        result.push(prevNum + prevPrevNum)
+    }  
+    return result[num]
+ }
+ 
+ // second
+ 
+ const fibonacciRecursive = num => {
+    if (num < 2) {
+      return num
+    }
+    
+    return fibonacciRecursive(num - 1) + fibonacciRecursive(num - 2)
+    
+ }
