@@ -1,0 +1,90 @@
+       A        B
+ 
+ 
+C        D
+ab = ac = cd = bd
+ad =?= bc
+   
+4 sides equal
+90 degree corners
+ab ac ad bc bd dc
+ab bc cd da 
+ab bd dc ca
+ac cb bd da
+ac 
+
+        D
+A
+ 
+          C
+  B
+
+
+let arr = [{x: 1, y: 1}, {x: 1, y: 2}, {x: 3, y: 2}, {x: 3, y: 1}]
+
+function isSquare(arr){
+    let delta = []
+    
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = arr.length - 1; j > i; j--) {
+            let diff = Math.pow((arr[i].x-arr[j].x),2)+Math.pow((arr[i].y-arr[j].y),2)
+            delta.push(diff)
+        }
+    }
+    
+    let cache = new Set()
+    
+    delta.forEach(elem => {
+        if (!cache[elem]) {
+            cache.set(elem, 1)
+        } else {
+            cache[elem]++
+        }
+    })
+
+    if ((cache[0] === 4 && cache[1]===2) || (cache[0] === 2 && cache[1]===4)) {
+        return true
+    }
+    
+    return false   
+        
+} 
+
+A     C
+
+B     ?
+function computeFourthPoint() {
+    ...
+}
+p1=(0,0)
+p2=(1,0)
+p3=(1,1)
+p4=(0,1)
+? = getSquares([p1,p2,p3,p4])
+function getSquares(arr){
+    let count = 0
+    
+    
+    let cache= {w:1, d:2}
+    
+    for() { //O(n)
+        cache[elem]
+    }
+    
+    for (let i = 0; i <= arr.length-4; i++) { //O(n*n*(n+1)) = n*n*n
+        for (let j = i + 1; j <= arr.length - 3; j++) {
+            for (let k = j + 1; k <= arr.length - 2; k++) {
+                
+                let d = computeFourthPoint([arr[i], arr[j], arr[k]])
+                
+                 if (isSquare([arr[i], arr[j], arr[k], d]) && (cache[d])) count++
+                
+                // for(let z = k + 1; z <= arr.length - 1; z++) {
+                //     if (isSquare([arr[i], arr[j], arr[k], arr[z]])) count++
+                // }
+            }
+        }
+    }
+    
+    return count
+}
